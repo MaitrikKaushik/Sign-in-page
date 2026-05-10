@@ -37,5 +37,5 @@ The main UI code is located in:
 
 ## Preview
 
-![App Screenshot](./assets/images/appScreenshot.jpeg)
+<img src="./assets/images/appScreenshot.jpeg" width="300" alt="App Screenshot" />
 
