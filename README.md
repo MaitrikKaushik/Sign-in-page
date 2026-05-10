@@ -33,11 +33,4 @@ The main UI code is located in:
    ```
 
 3. **View the App**:
-   - Press `a` to open in Android emulator.
-   - Press `i` to open in iOS simulator.
-   - Or scan the QR code with the Expo Go app on your physical device.
-
-## Design Highlights
-
-- **Flexbox Mastery**: Overriding parent `alignItems: 'center'` with `alignSelf: 'flex-start'` for specific text elements (like input labels).
-- **Custom Borders**: Adding breathing room between images and their borders by wrapping `<Image>` components in `<View>` containers with `padding` and `borderRadius: 50`.
+   - Scan the QR code with the Expo Go app on your physical device.
