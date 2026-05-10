@@ -34,3 +34,8 @@ The main UI code is located in:
 
 3. **View the App**:
    - Scan the QR code with the Expo Go app on your physical device.
+
+## Preview
+
+![App Screenshot](./assets/images/appScreenshot.jpeg)
+
