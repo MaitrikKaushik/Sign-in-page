@@ -1,98 +1,178 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Image, StyleSheet, Text, View, TextInput, Pressable } from 'react-native'
+import React, { useState } from 'react'
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+const HomeScreen = () => {
+  const [name, setName] = useState("");
 
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
-  );
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+
+      <Image
+        source={require("@/assets/images/icon.png")}
+        style={{
+          height: 50,
+          width: 50
+        }}
+      />
+
+      <Text style={{
+
+        fontWeight: "bold",
+        fontSize: 50
+      }}>
+        Sign In
+      </Text>
+      <Text>
+        Let's experience the joy of telecare AI.
+      </Text>
+      <Text style={{
+        alignSelf: "flex-start",
+        marginLeft: 20,
+        marginTop: 30
+      }}>
+        Email:
+      </Text>
+      <TextInput
+        style={{
+          height: 40,
+          borderColor: "gray",
+          borderWidth: 1,
+          width: 300,
+          marginTop: 5,
+          borderRadius: 20,
+          padding: 10
+
+        }}
+        placeholder="Enter your Email"
+        value={name}
+        onChangeText={setName}
+      />
+      <Text style={{
+        alignSelf: "flex-start",
+        marginLeft: 20,
+        marginTop: 30
+      }}>
+        Password:
+      </Text>
+      <TextInput
+        style={{
+          height: 40,
+          borderColor: "black",
+          borderWidth: 1,
+          width: 300,
+          marginTop: 5,
+          borderRadius: 20,
+          padding: 10
+
+        }}
+        placeholder="Enter your Password"
+        value={name}
+        onChangeText={setName}
+      />
+      <View style={{
+        marginTop: 20,
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 5
+      }}>
+        <View style={{
+          borderWidth: 1,
+          borderColor: "black",
+          padding: 8,
+          borderRadius: 50,
+        }}>
+          <Image
+            source={require("@/assets/images/facebook.png")}
+            style={{
+              height: 24,
+              width: 24,
+            }}
+
+          />
+        </View>
+        <View style={{
+          borderWidth: 1,
+          borderColor: "black",
+          padding: 8,
+          borderRadius: 50,
+        }}>
+          <Image
+            source={require("@/assets/images/twitter.png")}
+            style={{
+              height: 24,
+              width: 24,
+            }}
+
+          />
+        </View>
+        <View style={{
+          borderWidth: 1,
+          borderColor: "black",
+          padding: 8,
+          borderRadius: 50,
+        }}>
+          <Image
+            source={require("@/assets/images/instagram.png")}
+            style={{
+              height: 24,
+              width: 24,
+            }}
+
+          />
+        </View>
+      </View>
+      <View style={{
+        marginTop: 20,
+        justifyContent: "center",
+        alignItems: "center",
+        width: 200,
+        height: 40,
+        backgroundColor: "green",
+        borderRadius: 20,
+      }}  >
+        <Text style={{
+          color: "white",
+          fontSize: 20,
+          fontWeight: "bold",
+        }}>Sign In</Text>
+      </View>
+
+      <View style={{
+        flexDirection: "row",
+        gap: 5,
+        marginTop: 20,
+        justifyContent: "center",
+      }}>
+        <Text>Don't have an account?</Text>
+        <Text
+          onPress={() => console.log("Sign Up")}
+          style={{
+            color: "blue",
+            fontWeight: "bold",
+          }}>
+          Sign Up</Text>
+      </View>
+
+      <View style={{
+        marginTop: 10,
+        justifyContent: "center",
+      }}>
+        <Text
+          onPress={() => console.log("Sign Up")}
+          style={{
+            color: "blue",
+            fontWeight: "bold",
+          }}>
+          Forgot Password ? Click here !!</Text>
+      </View>
+
+
+    </View >
+
+
+  )
 }
 
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
+export default HomeScreen;
 
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
+const styles = StyleSheet.create({})
